@@ -1,0 +1,55 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  _id: ID!
+  name: String!
+  description: String!
+}
+
+type User {
+  _id: ID!
+  username: String!
+  email: String!
+}
+
+type LoginResponse {
+  token: String!
+  message: String!
+}
+
+type Query {
+  users: [User!]!
+  findAllItems(page: Float, limit: Float, sortBy: String, order: String, search: String): [Item!]!
+  findItemById(id: String!): Item!
+}
+
+type Mutation {
+  register(registerDto: RegisterDto!): User!
+  login(loginDto: LoginDto!): LoginResponse!
+  createItem(createItemDto: CreateItemDto!): Item!
+  updateItem(id: String!, updateItemDto: UpdateItemDto!): Item!
+  deleteItem(id: String!): Item!
+}
+
+input RegisterDto {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input LoginDto {
+  email: String!
+  password: String!
+}
+
+input CreateItemDto {
+  name: String!
+  description: String!
+}
+
+input UpdateItemDto {
+  name: String!
+  description: String!
+}
